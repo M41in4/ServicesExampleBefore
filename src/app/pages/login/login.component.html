@@ -1,0 +1,33 @@
+<div class="login-container">
+    <form class="form-signin" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <label for="inputUsername" 
+                   class="sr-only">Email address</label>
+            <input type="email" 
+                   id="inputUsername" 
+                   class="form-control" 
+                   placeholder="Email" 
+                   name="username" 
+                   [(ngModel)]="user.username"
+                   #username="ngModel" 
+                   required>
+            <div *ngIf="f.submitted && !username.valid" class="alert alert-danger help-block">Email is required</div>
+        </div>
+        <div class="form-group" 
+            [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <label for="inputPassword" 
+                   class="sr-only">Password</label>
+            <input type="password" 
+                   id="inputPassword" 
+                   class="form-control" 
+                   placeholder="Password" 
+                   name="password" 
+                   [(ngModel)]="user.password"
+                   #password="ngModel" 
+                   required>
+            <div *ngIf="f.submitted && !password.valid" class="alert alert-danger help-block">Password is required</div>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+</div>
